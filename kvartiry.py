@@ -14,12 +14,29 @@ links = page.xpath("//html/body/div[2]/div[h5/text()!='']")
 urlCian = "http://www.cian.ru/cat.php?deal_type=1&obl_id=1&metro[0]=0&city[0]=1&type=-2&wp=1&room2=1&foot_min=15&only_foot=2&cl=-1&p=1"
 #//*[@id="tbody"]/tbody/tr/td/table/tbody/tr/td/div[1]/fieldset/table[2]/tbody/tr/
 
-for i in range(300):
+for i in range(1):
 	metro = "http://www.cian.ru/cat.php?deal_type=1&obl_id=1&metro[0]=" + str(i+1) + "&city[0]=1&type=-2&wp=1&room2=1&foot_min=15&only_foot=2&cl=-1&p=1"
-	page = html.fromstring(urllib.urlopen(metro).read())
-	link = page.xpath("//*[@*]/a[3]")
-	if (len(link) > 0 ):
-		print "%d %s" % (i+1, link[0].text)
-
 	
+	page = html.fromstring(urllib.urlopen(metro).read())
+	#block with appartments
+	#linkStation = page.xpath("//*[@*]/a[3]")
+	blocks = page.xpath("//*[contains(@id,'tr_')]")
+	# print "%d %d %s" % (len(blocks), i+1, "")
 
+	for j in blocks:
+		price = j.xpath("//*[contains(@id, '_price')]")
+		#print "%d %s" % (len(price), price[2].text)
+		print type(price)
+		print len(price)
+
+	#//*[@id="dl2m_9649395_price"]/text()[1]
+	#//*[@id="dl2m_9649395_price"]/text()[2]
+# price block
+#//*[@id="dl2m_9649395_price"] 
+	# block = ""
+	# linkPrice = page.xpath("//*[@=*_price]//text()[1]")
+	# if (len(linkPrice) > 0 ):
+	# 	print "%d %d %s" % (len(linkPrice), i+1, "")
+	# 	for j in linkPrice:
+	# 		block = block + j.encode('ascii','ignore')
+	# print block
