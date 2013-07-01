@@ -20,5 +20,10 @@ for i in range(10):
 	for j in blocks:
 		#money j[4].text
 		#metro j[1][6].text
-		print "%s %s" % (j[4].text, j[1][6].text)
+		try:
+			price = int((j[4].text)[0] + (j[4].text)[1])
+		except ValueError:
+			price = -1
+		if (price <= 40 and price > 0 ):
+			print "%s %s" % (j[4].text, j[1][6].text)
 
