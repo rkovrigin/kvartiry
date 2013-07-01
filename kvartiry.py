@@ -25,13 +25,14 @@ for i in range(1):
 	#block with appartments
 	#linkStation = page.xpath("//*[@*]/a[3]")
 	blocks = page.xpath("//*[contains(@id,'tr_')]")
-	# print "%d %d %s" % (len(blocks), i+1, "")
+	print "%d %d %s" % (len(blocks), i+1, "")
 
 	for j in blocks:
-		price = j.xpath("//*[contains(@id, '_price')]")
+		#price = j.xpath("//*[contains(@id, '_price')]")
 		#print "%d %s" % (len(price), price[2].text)
-		print type(price)
-		print len(price)
+		#print type(j)
+		#print len(j)
+		print j[4].text
 
 	#//*[@id="dl2m_9649395_price"]/text()[1]
 	#//*[@id="dl2m_9649395_price"]/text()[2]
