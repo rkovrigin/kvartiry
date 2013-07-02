@@ -15,15 +15,17 @@ for i in range(10):
 	page = html.fromstring(urllib.urlopen(metro).read())
 	#block with appartments
 	blocks = page.xpath("//*[contains(@id,'tr_')]")
-	print "%d %d %s" % (len(blocks), i+1, "")
+	#print "%d %d %s" % (len(blocks), i+1, "")
 
 	for j in blocks:
 		#money j[4].text
 		#metro j[1][6].text
+		price = (j[4].text)
+		price2 = int((price.split(','))[0])
 		try:
-			price = int((j[4].text)[0] + (j[4].text)[1])
-		except ValueError:
-			price = -1
-		if (price <= 40 and price > 0 ):
-			print "%s %s" % (j[4].text, j[1][6].text)
+			metro = j[1][6]
+		except:
+			metro = "none"
 
+		if (price2 <= 40 and price2 > 0 and metro != "none"):
+			print "%d %s" % (price2, metro.text)
